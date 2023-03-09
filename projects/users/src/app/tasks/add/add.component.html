@@ -1,0 +1,24 @@
+<button (click)="isDisplayForm = !isDisplayForm">
+  <ng-container *ngIf="isDisplayForm; else elseTemplate">
+    Ocultar
+  </ng-container>
+  <!-- Es el equivalente a un fracment de React <></> -->
+  <ng-template #elseTemplate> Mostrar añadir tareas </ng-template>
+</button>
+
+<form
+  *ngIf="isDisplayForm"
+  [formGroup]="newTaskForm"
+  (ngSubmit)="handleSubmit()"
+>
+  <!-- Si hay corchetes (directivas) lo que viene después siempre es una variable -->
+  <div class="form-group">
+    <label for="">Título</label>
+    <input type="text" formControlName="title" />
+  </div>
+  <div class="form-group">
+    <label for="">Owner</label>
+    <input type="text" formControlName="owner" />
+  </div>
+  <button type="submit" [disabled]="newTaskForm.invalid">Añadir tarea</button>
+</form>

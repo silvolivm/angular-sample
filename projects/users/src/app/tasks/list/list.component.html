@@ -1,0 +1,12 @@
+<h2>Lista de Tareas</h2>
+<isdi-add (onAdd)="handleAdd($event)"></isdi-add>
+<ul>
+  <li *ngFor="let item of tasks">
+    <!-- Para escuchar el evento -->
+    <isdi-card
+      [item]="item"
+      (onDelete)="handleDelete($event)"
+      (onChange)="handleChange($event)"
+    ></isdi-card>
+  </li>
+</ul>
